@@ -191,7 +191,9 @@ def check_ubuntu():
         return dist
     elif dist == 'Ubuntu 13.04':
         return dist
-    return 'unknown'
+    elif dist == 'Ubuntu 13.10':
+        return dist
+    return 'Unknown'
 
 
 def get_templates_list():
