@@ -25,13 +25,13 @@ def _run(cmd, output=False):
     '''
     To run command easier
     '''
-    if output:
-        try:
-            out = subprocess.check_output('{}'.format(cmd), shell=True)
-        except subprocess.CalledProcessError:
-            out = False
-        return out
-    return subprocess.check_call('{}'.format(cmd), shell=True) # returns 0 for True
+    try:
+        if output:
+            return subprocess.check_output('{}'.format(cmd), shell=True)
+        else:
+            return subprocess.check_call('{}'.format(cmd), shell=True) # returns 0 for True
+    except subprocess.CalledProcessError:
+        return False
 
 class ContainerAlreadyExists(Exception): pass
 class ContainerDoesntExists(Exception): pass

@@ -409,7 +409,7 @@ def action():
 
             if action == 'start':
                 try:
-                    if lxc.start(name) == 0:
+                    if lxc.start(name) is 0:
                         time.sleep(1) # Fix bug : "the container is randomly not displayed in overview list after a boot"
                         flash(u'Container %s started successfully!' % name, 'success')
                     else:
@@ -418,7 +418,7 @@ def action():
                     flash(u'Container %s is already running!' % name, 'error')
             elif action == 'stop':
                 try:
-                    if lxc.stop(name) == 0:
+                    if lxc.stop(name) is 0:
                         flash(u'Container %s stopped successfully!' % name, 'success')
                     else:
                         flash(u'Unable to stop %s!' % name, 'error')
@@ -426,7 +426,7 @@ def action():
                     flash(u'Container %s is already stopped!' % name, 'error')
             elif action == 'freeze':
                 try:
-                    if lxc.freeze(name) == 0:
+                    if lxc.freeze(name) is 0:
                         flash(u'Container %s frozen successfully!' % name, 'success')
                     else:
                         flash(u'Unable to freeze %s!' % name, 'error')
@@ -434,7 +434,7 @@ def action():
                     flash(u'Container %s not running!' % name, 'error')
             elif action == 'unfreeze':
                 try:
-                    if lxc.unfreeze(name) == 0:
+                    if lxc.unfreeze(name) is 0:
                         flash(u'Container %s unfrozen successfully!' % name, 'success')
                     else:
                         flash(u'Unable to unfeeze %s!' % name, 'error')
@@ -444,7 +444,7 @@ def action():
                 if session['su'] != 'Yes':
                     return abort(403)
                 try:
-                    if lxc.destroy(name) == 0:
+                    if lxc.destroy(name) is 0:
                         flash(u'Container %s destroyed successfully!' % name, 'success')
                     else:
                         flash(u'Unable to destroy %s!' % name, 'error')
