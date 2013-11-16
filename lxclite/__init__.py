@@ -99,7 +99,9 @@ def ls():
 
     Note: Directory mode for Ubuntu 12/13 compatibility
     '''
-    try: ct_list = os.listdir('/var/lib/lxc/')
+    base_dir = '/var/lib/lxc/'
+    try:
+        ct_list = filter(lambda name: os.path.isdir(base_dir + name), os.listdir(base_dir))
     except OSError: ct_list = []
     return sorted(ct_list)
 
