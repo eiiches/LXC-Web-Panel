@@ -462,7 +462,7 @@ def action():
                     flash(u'System error!', 'error')
         try:
             if request.args['from'] == 'edit':
-                return redirect('../%s/edit' % name)
+                return redirect(url_for('edit', container=name))
             else:
                 return redirect(url_for('home'))
         except:
