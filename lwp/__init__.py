@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../')
-from lxclite import exists, stopped
+from lxclite import exists, stopped, ContainerDoesntExists
 import subprocess
 import os
 import platform
@@ -84,7 +84,7 @@ def memory_usage(name):
     returns memory usage in MB
     '''
     if not exists(name):
-        raise ContainerNotExists("The container (%s) does not exist!" % name)
+        raise ContainerDoesntExists("The container (%s) does not exist!" % name)
     if name in stopped():
         return 0
     cmd = ['lxc-cgroup -n %s memory.usage_in_bytes' % name]
